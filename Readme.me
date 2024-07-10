@@ -1,33 +1,104 @@
-# Autoencoder Notebook Summary
+# IDS Model Training and Evaluation
 
-## Introduction
-This notebook contains code to create, train, and evaluate an autoencoder model using Keras. An autoencoder is a type of artificial neural network used to learn efficient codings of unlabeled data.
+This repository provides scripts to train and evaluate various machine learning models for Intrusion Detection Systems (IDS). The available models are:
 
-## Code Breakdown
-1. **Importing Libraries**: The necessary libraries such as TensorFlow and Keras are imported.
-2. **Data Preparation**: The dataset is loaded and preprocessed. The data is expanded to fit the input shape required by the autoencoder.
-3. **Model Architecture**: The autoencoder architecture is defined, consisting of an encoder and a decoder.
-4. **Model Compilation**: The model is compiled with a loss function and an optimizer.
-5. **Model Training**: The autoencoder is trained on the training dataset.
-6. **Model Evaluation**: The autoencoder is evaluated on the test dataset to determine its reconstruction loss.
-7. **Reconstruction**: The trained autoencoder is used to reconstruct the test dataset.
+1. Convolutional Neural Network (CNN)
+2. Autoencoder
+3. Random Forest
 
-## Conclusion
-The notebook demonstrates the entire process of building an autoencoder, from data preparation to model evaluation.
+## Prerequisites
 
-# CNN Notebook Summary
+Before running any of the scripts, ensure you have the required tools and libraries installed. This guide assumes you are using PyCharm 2024.1, Python 3.12.2, and WSL2 on Windows 11 with TensorFlow 2.16.2 and Keras 3.4.1.
 
-## Introduction
-This notebook contains code to create, train, and evaluate a Convolutional Neural Network (CNN) model using Keras. CNNs are a class of deep neural networks that are most commonly applied to analyzing visual imagery.
+### Tools and Libraries
 
-## Code Breakdown
-1. **Importing Libraries**: The necessary libraries such as TensorFlow, Keras, and scikit-learn are imported.
-2. **Data Preparation**: The dataset is loaded and preprocessed. The data is expanded to fit the input shape required by the CNN.
-3. **Model Architecture**: The CNN architecture is defined, consisting of multiple convolutional and pooling layers followed by dense layers.
-4. **Model Compilation**: The model is compiled with a loss function and an optimizer.
-5. **Model Training**: The CNN is trained on the training dataset.
-6. **Model Evaluation on Validation Set**: The trained model is evaluated on the validation dataset to determine its accuracy.
-7. **Model Evaluation on Test Set**: The trained model is evaluated on the test dataset to determine its accuracy and loss.
+- **PyCharm 2024.1**
+- **Python 3.12.2**
+- **WSL2 (Windows Subsystem for Linux)**
+- **TensorFlow 2.16.2**
+- **Keras 3.4.1**
+- **pandas**
+- **numpy**
+- **seaborn**
+- **matplotlib**
+- **scikit-learn**
+- **keras-tuner**
 
-## Conclusion
-The notebook provides a complete example of building and evaluating a CNN for image classification tasks.
+## Installation Steps
+
+### 1. Install WSL2 on Windows 11
+
+1. Open PowerShell as Administrator and run:
+    ```powershell
+    wsl --install
+    ```
+
+2. Set your default WSL version to 2:
+    ```powershell
+    wsl --set-default-version 2
+    ```
+
+3. Install a Linux distribution (e.g., Ubuntu) from the Microsoft Store.
+
+### 2. Set Up Your Python Environment
+
+1. Open WSL2 terminal (Ubuntu).
+2. Update your package list and install Python:
+    ```bash
+    sudo apt update
+    sudo apt install python3.12
+    sudo apt install python3.12-venv
+    sudo apt install python3-pip
+    ```
+
+3. Create a virtual environment:
+    ```bash
+    python3.12 -m venv ids_env
+    source ids_env/bin/activate
+    ```
+
+4. Upgrade pip:
+    ```bash
+    pip install --upgrade pip
+    ```
+
+### 3. Install TensorFlow
+
+Follow the [official guide](https://www.tensorflow.org/install/pip#windows-wsl2) to install TensorFlow on WSL2.
+
+1. Install TensorFlow:
+    ```bash
+    pip install tensorflow==2.16.2
+    ```
+
+### 4. Install PyCharm
+
+1. Download and install PyCharm from the [JetBrains website](https://www.jetbrains.com/pycharm/download/).
+
+2. Configure PyCharm to use WSL2:
+    - Open PyCharm.
+    - Go to `File` > `Settings` > `Project: <project_name>` > `Python Interpreter`.
+    - Click the gear icon and select `Add`.
+    - Choose `WSL` from the options and select the Python interpreter from your WSL2 installation.
+
+### 5. Install Required Python Libraries
+
+1. Install the required libraries using pip:
+    ```bash
+    pip install tensorflow==2.16.2 keras==3.4.1 pandas numpy seaborn matplotlib scikit-learn keras-tuner
+    ```
+
+## Dataset
+
+The dataset should be organized in parts, with each part named in the format `part-0000x-363d1ba3-8ab5-4f96-bc25-4d5862db7cb9-c000.csv`.
+
+## Running the Models
+
+### CNN Model
+
+#### Training
+
+To train the CNN model, use the following command:
+
+```bash
+python train_model.py cnn --dataset_path /path/to/dataset --test_size 0.2 --scaler minmax --mode train --epochs 20 --batch_size 128 --learning_rate 0.001 --num_files 5
