@@ -133,7 +133,7 @@ To evaluate the Autoencoder model, use the following command:
 #### Evaluation
 To evaluate the Random Forest model, use the following command:
 ```bash
-!python train_model.py random_forest --dataset_path /path/to/dataset --scaler minmax --mode eval --num_files 5
+!python train_model.py random_forest --dataset_path /path/to/dataset --scaler minmax --num_files 5
 ```
 ### Arguments
 --dataset_path: Path to the directory containing the dataset files.
