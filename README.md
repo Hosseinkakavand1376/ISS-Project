@@ -104,36 +104,37 @@ Downloading the CIC IoT Dataset 2023
 
 To train the CNN model, use the following command:
 
-
+```bash
 !python train_model.py cnn --dataset_path /path/to/dataset --test_size 0.2 --scaler minmax --mode train --epochs 20 --batch_size 128 --learning_rate 0.001 --num_files 5
-
+```
 
 If you want to encode the input data using an autoencoder before training the CNN, add the --encode flag:
-
+```bash
 !python train_model.py cnn --dataset_path /path/to/dataset --test_size 0.2 --scaler minmax --mode train --epochs 20 --batch_size 128 --learning_rate 0.001 --num_files 5 --encode
-
+```
 #### Evaluation
 
 To evaluate the CNN model, use the following command:
-
+```bash
 !python train_model.py cnn --dataset_path /path/to/dataset --scaler minmax --mode eval --num_files 5
-
+```
 ### Autoencoder
 #### Training
 To train the Autoencoder model, use the following command:
+```bash
 !python train_model.py autoencoder --dataset_path /path/to/dataset --test_size 0.2 --scaler minmax --mode train --epochs 15 --batch_size 128 --learning_rate 0.001 --num_files 5 --loss mse
+```
 #### Evaluation
 To evaluate the Autoencoder model, use the following command:
+```bash
 !python train_model.py autoencoder --dataset_path /path/to/dataset --scaler minmax --mode eval --num_files 5 --loss mse
-
+```
 ### Random Forest
-#### Training
-To train the Random Forest model, use the following command:
-!python train_model.py random_forest --dataset_path /path/to/dataset --test_size 0.2 --scaler minmax --mode train --num_files 5
 #### Evaluation
 To evaluate the Random Forest model, use the following command:
+```bash
 !python train_model.py random_forest --dataset_path /path/to/dataset --scaler minmax --mode eval --num_files 5
-
+```
 ### Arguments
 --dataset_path: Path to the directory containing the dataset files.
 --test_size: Test set size as a fraction of the total dataset (required for training mode).
@@ -149,18 +150,29 @@ To evaluate the Random Forest model, use the following command:
 
 ### Example Commands
 #### Train CNN without encoding:
+```bash
 !python train_model.py cnn --dataset_path /path/to/dataset --test_size 0.2 --scaler minmax --mode train --epochs 20 --batch_size 128 --learning_rate 0.001 --num_files 5
+```
 #### Train CNN with encoding:
+```bash
 !python train_model.py cnn --dataset_path /path/to/dataset --test_size 0.2 --scaler minmax --mode train --epochs 20 --batch_size 128 --learning_rate 0.001 --num_files 5 --encode
+```
 #### Evaluate CNN:
+```bash
 !python train_model.py cnn --dataset_path /path/to/dataset --scaler minmax --mode eval --num_files 5
+```
 #### Train Autoencoder with MSE loss:
+```bash
 !python train_model.py autoencoder --dataset_path /path/to/dataset --test_size 0.2 --scaler minmax --mode train --epochs 15 --batch_size 128 --learning_rate 0.001 --num_files 5 --loss mse
+```
 #### Evaluate Autoencoder with MSE loss:
+```bash
 !python train_model.py autoencoder --dataset_path /path/to/dataset --scaler minmax --mode eval --num_files 5 --loss mse
+```
 #### Evaluate Random Forest:
+```bash
 !python train_model.py random_forest --dataset_path /path/to/dataset --scaler minmax --num_files 5
-
+```
 ### Notes
 Ensure that the dataset files follow the naming convention as expected by the scripts.
 The models will be saved and loaded from the specified paths during training and evaluation.
